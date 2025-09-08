@@ -36,20 +36,20 @@ const Experience = () => {
                     <>
                         <div className="p-6 border rounded-xl shadow-md hover:shadow-black duration-300">
                             {/* Title */}
-                            <h3 className="font-semibold text-lg text-darkTheme">
+                            <h3 className="font-semibold text-xl text-darkTheme">
                                 Web Developer Intern
                             </h3>
                             {/* Duration */}
-                            <p className="text-sm text-red-500 font-medium">
+                            <p className="text-lg text-red-500 font-medium">
                                 Jan 2025 – Jul 2025
                             </p>
                             {/* Company */}
-                            <p className="text-sm font-semibold text-gray-800 mt-1">
+                            <p className="text-lg font-semibold text-gray-800 mt-1">
                                 PT. Global Service Indonesia
                             </p>
 
                             {/* Description */}
-                            <ul className="list-disc list-inside mt-3 text-gray-700 text-sm space-y-1">
+                            <ul className="list-disc list-inside mt-3 text-gray-700 text-base space-y-1">
                                 <li>
                                     Developed a Company Profile web application using Vue.js to support the
                                     digitalization of corporate information.
@@ -82,20 +82,20 @@ const Experience = () => {
 
                         <div className="p-6 border rounded-xl shadow-md hover:shadow-black duration-300">
                             {/* Title */}
-                            <h3 className="font-semibold text-lg text-darkTheme">
+                            <h3 className="font-semibold text-xl text-darkTheme">
                                 Website Developer
                             </h3>
                             {/* Duration */}
-                            <p className="text-sm text-red-500 font-medium">
+                            <p className="text-lg text-red-500 font-medium">
                                 Apr 2024 - Des 2024
                             </p>
                             {/* Company */}
-                            <p className="text-sm font-semibold text-gray-800 mt-1">
+                            <p className="text-lg font-semibold text-gray-800 mt-1">
                                 PT. Astra Honda Motor
                             </p>
 
                             {/* Description */}
-                            <ul className="list-disc list-inside mt-3 text-gray-700 text-sm space-y-1">
+                            <ul className="list-disc list-inside mt-3 text-gray-700 text-base space-y-1">
                                 <li>
                                     Migrated the Bill of Materials (BOM) Accessories application to Java Spring Boot,
                                     enabling the creation, activation, and integration of accessory data based on
@@ -128,7 +128,6 @@ const Experience = () => {
                         </div>
                     </>
                 )}
-
 
                 {activeTab === "education" && (
                     <div className="p-6 border rounded-xl shadow-md hover:shadow-black duration-300">

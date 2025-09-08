@@ -1,75 +1,64 @@
 const projects = [
   {
     id: 1,
-    title: "Room & Equipment Borrowing System",
-    duration: "Web Application",
-    company: "Astra Polytechnic",
+    title: "Dashboard 5K2S",
     description: [
-      "A web-based application for managing room and equipment borrowing.",
-      "Developed with role-based access, lending/return modules, and QR Code integration."
+      "A web platform designed to make it easier for users to view, create, display, and filter data for each student class." + 
+      "This platform implements features such as histogram graphs to visualize the order of class data. In addition, 5K2S also allows users to enter presentations for each class with radio button options and provides assessment history for each user."
     ],
-    image: "/room.png",
-    tech: ["Laravel", "PHP", "MySQL", ".Net Core", "C#", "SQL Server"],
+    image: "/images/Dashboard5K2S.png",
+    tech: ["CodeIgniter", "PHP", "JavaScript", "MySQL"],
+    github: "https://github.com/mhmdarfiansyahp/Dashboard5K2S.git",
   },
   {
     id: 2,
-    title: "MI Savings",
-    duration: "Mobile App",
-    company: "Final Project",
+    title: "HeroApp",
     description: [
       "A mobile personal finance app for tracking income, expenses, goals, and generating monthly reports.",
       "Promotes financial literacy and efficient money management."
     ],
     image: "/misavings.png",
-    tech: ["Java", "Android", "SQL Server", "XML UI"],
+    tech: ["Java", "Android", "PHP", "MySQL"],
   },
   {
     id: 3,
-    title: "Digital Logistic Transport Permit",
-    duration: "Digital Transformation",
-    company: "Independent Project",
+    title: "Internak",
     description: [
       "Digital transformation project for vehicle and goods management.",
       "Includes permit tracking, scheduling, and real-time monitoring features."
     ],
     image: "/logistic.png",
-    tech: ["Laravel", "PHP", "Livewire", "MySQL"],
+    tech: ["Java", "Android", "Spring Boot", "SQL Server"],
   },
   {
     id: 4,
-    title: "Digital Logistic Transport Permit",
-    duration: "Digital Transformation",
-    company: "Independent Project",
+    title: "PotekGas",
     description: [
       "Digital transformation project for vehicle and goods management.",
       "Includes permit tracking, scheduling, and real-time monitoring features."
     ],
     image: "/logistic.png",
-    tech: ["Laravel", "PHP", "Livewire", "MySQL"],
+    tech: ["Java", "Spring Boot", "React.js", "SQL Server"],
   },
   {
     id: 5,
-    title: "Digital Logistic Transport Permit",
-    duration: "Digital Transformation",
-    company: "Independent Project",
+    title: "AutoTra",
     description: [
       "Digital transformation project for vehicle and goods management.",
       "Includes permit tracking, scheduling, and real-time monitoring features."
     ],
     image: "/logistic.png",
-    tech: ["Laravel", "PHP", "Livewire", "MySQL"],
+    tech: ["ASP.NET", "C#", "JavaScript", "SQL Server"],
   },
   {
     id: 6,
-    title: "Digital Logistic Transport Permit",
-    duration: "Digital Transformation",
-    company: "Independent Project",
+    title: "Assesswatch",
     description: [
       "Digital transformation project for vehicle and goods management.",
       "Includes permit tracking, scheduling, and real-time monitoring features."
     ],
     image: "/logistic.png",
-    tech: ["Laravel", "PHP", "Livewire", "MySQL"],
+    tech: ["Laravel", "JavaScript", "PHP", "MySQL", "ASP.NET", "C#", "SQL Server"],
   },
 ];
 

@@ -20,9 +20,9 @@ import download_icon from './download-icon.png';
 // import hand_icon from './hand-icon.png';
 // import header_bg_color from './header-bg-color.png';
 import moon_icon from './moon_icon.png';
-// import sun_icon from './sun_icon.png';
-// import arrow_icon from './arrow-icon.png';
-// import arrow_icon_dark from './arrow-icon-dark.png';
+import sun_icon from './sun_icon.png';
+import arrow_icon from './arrow-icon.png';
+import arrow_icon_dark from './arrow-icon-dark.png';
 import menu_black from './menu-black.png';
 import menu_white from './menu-white.png';
 import close_black from './close-black.png';
@@ -39,6 +39,8 @@ import cogwheel from './cogwheel.png';
 import database from './database.png';
 import web_desain from './web-design.png';
 import idea from './idea.png';
+import docker_icon from './docker-icon.png';
+import profile2 from './profile2.png';
 
 export const assets = {
     // user_image,
@@ -59,13 +61,14 @@ export const assets = {
     // mail_icon,
     // mail_icon_dark,
     profile,
+    profile2,
     download_icon,
     // hand_icon,
     // header_bg_color,
     moon_icon,
-    // sun_icon,
-    // arrow_icon,
-    // arrow_icon_dark,
+    sun_icon,
+    arrow_icon,
+    arrow_icon_dark,
     menu_black,
     menu_white,
     close_black,
@@ -82,6 +85,8 @@ export const assets = {
     database,
     web_desain,
     idea,
+    docker_icon
+    
 };
 
 export const workData = [
@@ -122,5 +127,5 @@ export const infoList = [
 ];
 
 export const toolsData = [
-    assets.vscode, assets.figma, assets.git
+    assets.vscode, assets.figma, assets.git, assets.docker_icon
 ];

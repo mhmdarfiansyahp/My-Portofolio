@@ -19,8 +19,8 @@ const projects = [
     image: "/images/HeroApp.png",
     tech: ["Java", "Android", "PHP", "MySQL"],
     github: [
-      { label: "Frontend", url: "https://github.com/mhmdarfiansyahp/Assesswatch-Laravel.git" },
-      { label: "Backend", url: "https://github.com/mhmdarfiansyahp/PotekGas-Be.git" }
+      { label: "Frontend", url: "https://github.com/DaffaAbiyyu29/HEROApp.git" },
+      { label: "Backend", url: "https://github.com/salsans/HeroApp_BE.git" }
     ]
   },
   {
@@ -45,7 +45,7 @@ const projects = [
     image: "/images/PotekGas.png",
     tech: ["Java", "Spring Boot", "React.js", "SQL Server"],
     github: [
-      { label: "Frontend", url: "https://github.com/mhmdarfiansyahp/Assesswatch-Laravel.git" },
+      { label: "Frontend", url: "https://github.com/mhmdarfiansyahp/PotekGas-Fe.git" },
       { label: "Backend", url: "https://github.com/mhmdarfiansyahp/PotekGas-Be.git" }
     ]
   },

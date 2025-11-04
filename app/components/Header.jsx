@@ -7,16 +7,21 @@ import { motion } from 'framer-motion'
 
 const Header = () => {
     return (
-        <div className='w-11/12 max-w-3xl text-center mx-auto h-screen flex flex-col
-        items-center justify-center gap-4'>
-            
+        <div
+            className="w-11/12 max-w-3xl text-center mx-auto min-h-screen flex flex-col
+            items-center justify-center gap-4 pt-24" 
+        >
             {/* Profile Image */}
             <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.8 }}
             >
-                <Image src={assets.profile2} alt='' className='rounded-full w-64' />
+                <Image
+                    src={assets.profile2}
+                    alt="Profile photo"
+                    className="rounded-full w-64 shadow-lg"
+                />
             </motion.div>
 
             {/* Intro */}
@@ -51,7 +56,7 @@ const Header = () => {
 
             {/* Button */}
             <motion.div
-                className='flex flex-col sm:flex-row items-center mt-4'
+                className="flex flex-col sm:flex-row items-center mt-4"
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.9, delay: 1 }}
@@ -60,8 +65,8 @@ const Header = () => {
                     href="/CV_Mohamad Arfiansyah Putra.pdf"
                     download
                     className="px-10 py-3 border rounded-full border-gray-400 flex items-center gap-2
-               transition-all duration-300 hover:bg-darkHover hover:text-white
-               hover:shadow-md "
+                    transition-all duration-300 hover:bg-darkHover hover:text-white
+                    hover:shadow-md"
                 >
                     <Download className="w-5 h-5" />
                     Get My Resume

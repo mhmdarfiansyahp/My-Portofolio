@@ -1,174 +1,224 @@
-import Image from "next/image";
-import React, { useRef, useEffect, useState } from "react";
-import { assets } from "@/public/assets/assets";
+"use client";
+
+import React, { useEffect, useState } from "react";
 import { Moon, Sun, Menu, X } from "lucide-react";
 
 const Navbar = () => {
   const [isScroll, setIsScroll] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const sideMenuRef = useRef(null);
 
-  // 🔹 Theme toggle
+  // Theme state
   const [theme, setTheme] = useState("dark");
 
+  // Load saved theme
   useEffect(() => {
-    document.documentElement.classList.add("dark"); // default dark
-  }, []);
+    const savedTheme = localStorage.getItem("theme");
 
-  const toggleTheme = () => {
-    if (theme === "dark") {
+    if (savedTheme === "light") {
       document.documentElement.classList.remove("dark");
       setTheme("light");
     } else {
       document.documentElement.classList.add("dark");
       setTheme("dark");
     }
-  };
+  }, []);
 
-  const openMenu = () => {
-    if (sideMenuRef.current) {
-      sideMenuRef.current.style.transform = "translateX(-16rem)";
-      setIsMenuOpen(true);
+  // Toggle theme
+  const toggleTheme = () => {
+    if (theme === "dark") {
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+      setTheme("light");
+    } else {
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+      setTheme("dark");
     }
   };
 
-  const closeMenu = () => {
-    if (sideMenuRef.current) {
-      sideMenuRef.current.style.transform = "translateX(16rem)";
-      setIsMenuOpen(false);
-    }
-  };
-
+  // Navbar scroll effect
   useEffect(() => {
     const handleScroll = () => {
       setIsScroll(window.scrollY > 50);
     };
+
     window.addEventListener("scroll", handleScroll);
+
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <>
-      <nav
-        className={`w-full fixed px-5 lg:px-8 xl:px-[8%] py-4 flex items-center justify-between z-50 transition-all duration-500
-          ${
-            isScroll
-              ? "bg-transparent backdrop-blur-md shadow-none" // 🔹 Transparan ketika scroll
-              : "bg-white dark:bg-darkTheme shadow-sm" // 🔹 Solid ketika di atas
-          }`}
+    <nav
+      className={`
+        fixed top-0 left-0 w-full z-50
+        flex items-center justify-between
+        px-5 lg:px-8 xl:px-[8%] py-4
+        transition-all duration-300
+        ${
+          isScroll
+            ? "bg-white/80 dark:bg-[#0f0f0f]/80 backdrop-blur-md shadow-sm"
+            : "bg-transparent"
+        }
+      `}
+    >
+      {/* Logo */}
+      <a
+        href="#top"
+        className="
+          text-xl sm:text-2xl
+          font-semibold tracking-wide
+          text-black dark:text-white
+        "
       >
-        {/* Logo */}
-        <a href="" className="w-28 cursor-pointer mr-14 font-bold">
-          Arfiansyah
+        Arfiansyah
+      </a>
+
+      {/* Desktop Menu */}
+      <ul
+        className="
+          hidden md:flex items-center gap-8
+          px-10 py-3 rounded-full
+          bg-white/70 dark:bg-white/5
+          backdrop-blur-md
+          border border-black/5 dark:border-white/10
+          text-black dark:text-white
+        "
+      >
+        <li>
+          <a className="font-Ovo hover:text-gray-500 transition" href="#top">
+            Home
+          </a>
+        </li>
+
+        <li>
+          <a className="font-Ovo hover:text-gray-500 transition" href="#about">
+            About
+          </a>
+        </li>
+
+        <li>
+          <a
+            className="font-Ovo hover:text-gray-500 transition"
+            href="#experience"
+          >
+            Experience
+          </a>
+        </li>
+
+        <li>
+          <a
+            className="font-Ovo hover:text-gray-500 transition"
+            href="#project"
+          >
+            Project
+          </a>
+        </li>
+
+        <li>
+          <a
+            className="font-Ovo hover:text-gray-500 transition"
+            href="#contact"
+          >
+            Contact
+          </a>
+        </li>
+      </ul>
+
+      {/* Right Side */}
+      <div className="flex items-center gap-4">
+        {/* Theme Toggle */}
+        <button
+          onClick={toggleTheme}
+          className="
+            p-2 rounded-full
+            border border-black/10 dark:border-white/10
+            bg-white/70 dark:bg-white/5
+            backdrop-blur-md
+            hover:scale-105
+            transition-all duration-300
+            text-black dark:text-white
+          "
+        >
+          {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+        </button>
+
+        {/* Mobile Menu Button */}
+        <button
+          className="
+            md:hidden p-2 rounded-lg
+            border border-black/10 dark:border-white/10
+            bg-white/70 dark:bg-white/5
+            backdrop-blur-md
+            text-black dark:text-white
+          "
+          onClick={() => setIsMenuOpen(true)}
+        >
+          <Menu size={22} />
+        </button>
+      </div>
+
+      {/* Mobile Sidebar */}
+      <div
+        className={`
+          fixed top-0 right-0 h-screen w-64 z-50
+          flex flex-col gap-6
+          px-8 py-20
+          transition-transform duration-300
+          bg-white dark:bg-[#0f0f0f]
+          text-black dark:text-white
+          border-l border-black/10 dark:border-white/10
+          ${isMenuOpen ? "translate-x-0" : "translate-x-full"}
+        `}
+      >
+        {/* Close Button */}
+        <button
+          className="absolute top-6 right-6"
+          onClick={() => setIsMenuOpen(false)}
+        >
+          <X size={24} />
+        </button>
+
+        <a
+          href="#top"
+          onClick={() => setIsMenuOpen(false)}
+          className="font-Ovo text-lg"
+        >
+          Home
         </a>
 
-        {/* Menu di kanan */}
-        <div className="flex items-center gap-6">
-          {/* Toggle Theme */}
-          <button
-            onClick={toggleTheme}
-            className="p-2 rounded-full border border-gray-400 hover:bg-lightHover dark:hover:bg-darkHover transition"
-          >
-            {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
-          </button>
-
-          {/* Menu utama */}
-          <ul
-            className={`hidden md:flex items-center gap-6 lg:gap-8 rounded-full px-12 py-3 ${
-              isScroll
-                ? ""
-                : "bg-white shadow-sm bg-opacity-50 dark:bg-darkTheme"
-            }`}
-          >
-            <li>
-              <a className="font-Ovo" href="#top">
-                Home
-              </a>
-            </li>
-            <li>
-              <a className="font-Ovo" href="#about">
-                About
-              </a>
-            </li>
-            <li>
-              <a className="font-Ovo" href="#experience">
-                Experience
-              </a>
-            </li>
-            <li>
-              <a className="font-Ovo" href="#project">
-                Project
-              </a>
-            </li>
-            <li>
-              <a className="font-Ovo" href="#contact">
-                Contact
-              </a>
-            </li>
-          </ul>
-
-          {/* Hamburger menu */}
-          {!isMenuOpen && (
-            <button
-              className="block md:hidden ml-3 p-2 rounded-md hover:bg-lightHover dark:hover:bg-darkHover transition"
-              onClick={openMenu}
-            >
-              <Menu size={24} className="text-gray-900 dark:text-white" />{" "}
-              {/* 🔹 ganti dari Image ke icon */}
-            </button>
-          )}
-        </div>
-
-        {/* Mobile Menu */}
-        <ul
-          ref={sideMenuRef}
-          className={`flex md:hidden flex-col gap-4 py-20 px-10 fixed -right-64
-              top-0 bottom-0 w-64 z-50 h-screen transition duration-500
-              ${
-                theme === "dark"
-                  ? "bg-darkTheme text-white"
-                  : "bg-white text-gray-900"
-              }`}
+        <a
+          href="#about"
+          onClick={() => setIsMenuOpen(false)}
+          className="font-Ovo text-lg"
         >
-          <div
-            className="absolute top-6 right-6 cursor-pointer"
-            onClick={closeMenu}
-          >
-            <X
-              size={24}
-              className={theme === "dark" ? "text-white" : "text-gray-900"}
-            />
-            {/* 🔹 pakai icon X dari lucide-react */}
-          </div>
+          About
+        </a>
 
-          <li>
-            <a className="font-Ovo" onClick={closeMenu} href="#top">
-              Home
-            </a>
-          </li>
-          <li>
-            <a className="font-Ovo" onClick={closeMenu} href="#about">
-              About
-            </a>
-          </li>
-          <li>
-            <a className="font-Ovo" onClick={closeMenu} href="#experience">
-              Experience
-            </a>
-          </li>
-          <li>
-            <a className="font-Ovo" onClick={closeMenu} href="#project">
-              Project
-            </a>
-          </li>
-          <li>
-            <a className="font-Ovo" onClick={closeMenu} href="#contact">
-              Contact
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </>
+        <a
+          href="#experience"
+          onClick={() => setIsMenuOpen(false)}
+          className="font-Ovo text-lg"
+        >
+          Experience
+        </a>
+
+        <a
+          href="#project"
+          onClick={() => setIsMenuOpen(false)}
+          className="font-Ovo text-lg"
+        >
+          Project
+        </a>
+
+        <a
+          href="#contact"
+          onClick={() => setIsMenuOpen(false)}
+          className="font-Ovo text-lg"
+        >
+          Contact
+        </a>
+      </div>
+    </nav>
   );
 };
 

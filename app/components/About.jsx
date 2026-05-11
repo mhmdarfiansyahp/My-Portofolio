@@ -6,9 +6,13 @@ import { motion } from "framer-motion";
 
 const About = () => {
   return (
-    <div id="about" className="w-full px-[12%] py-10 scroll-mt-20">
+    <section
+      id="about"
+      className="w-full px-[8%] lg:px-[12%] py-16 scroll-mt-20"
+    >
+      {/* Title */}
       <motion.h2
-        className="text-center text-5xl font-Ovo"
+        className="text-center text-4xl sm:text-5xl font-Ovo text-black dark:text-white"
         initial={{ opacity: 0, y: -30 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
@@ -17,9 +21,9 @@ const About = () => {
         About Me
       </motion.h2>
 
-      {/* Bagi 2 kolom */}
-      <div className="flex flex-col lg:flex-row items-start gap-16 my-10">
-        {/* Kiri: Teks */}
+      {/* Content */}
+      <div className="flex flex-col lg:flex-row items-start gap-16 mt-14">
+        {/* Left Side */}
         <motion.div
           className="flex-1"
           initial={{ opacity: 0, x: -50 }}
@@ -27,38 +31,45 @@ const About = () => {
           transition={{ duration: 0.9 }}
           viewport={{ once: true }}
         >
-          <p className="max-w-2xl font-Ovo">
-            Passionate about creating impactful digital solutions,
-            I enjoy transforming complex ideas into applications that are both scalable and intuitive.
-            My experience in industry projects has strengthened my technical expertise and adaptability,
-            enabling me to align technology with real business needs while keeping user experience at the center.
+          <p className="max-w-2xl font-Ovo leading-8 text-gray-700 dark:text-gray-300 text-base">
+            I'm a Fullstack Web Developer with nearly a year of hands-on
+            experience, interested in building web applications that are
+            functional, scalable, and easy to use.
             <br />
             <br />
-            Driven by curiosity and a growth mindset, I continuously refine my skills and explore new technologies to stay ahead in the evolving tech landscape. 
-            I actively seek opportunities to learn from challenges and embrace innovative approaches, believing that adaptability is key to long-term success. 
-            I also value fostering strong collaboration and clear communication within teams, 
-            as I am convinced that these are essential for building solutions that are not only effective but also truly make a positive impact on users and organizations.
+            I work with technologies such as React, Next.js, Vue.js, Node.js,
+            Laravel, Spring Boot, Golang, and .NET, along with PostgreSQL and
+            MySQL for database management.
+            <br />
+            <br />I enjoy learning through real-world projects, exploring new
+            technologies, and continuously improving my skills while
+            collaborating with others to build meaningful digital solutions.
           </p>
         </motion.div>
 
-        {/* Kanan: List */}
+        {/* Right Side */}
         <motion.div
-          className="flex-1"
+          className="flex-1 w-full"
           initial={{ opacity: 0, x: 50 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.9 }}
           viewport={{ once: true }}
         >
+          {/* Info Cards */}
           <ul className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {infoList.map(({ icon, title, description }, index) => (
               <motion.li
                 key={index}
-                className="border-[0.5px] border-gray-400 rounded-xl p-6 cursor-pointer 
-                  hover:-translate-y-1 duration-500 hover:shadow-white"
-                style={{ background: "rgba(255, 255, 255, 0.05)" }}
+                className="
+                  rounded-2xl p-6 border border-black/10 dark:border-white/10
+                  bg-black/5 dark:bg-white/5 backdrop-blur-sm
+                  hover:bg-black/10 dark:hover:bg-white/10
+                  hover:border-black/20 dark:hover:border-white/20
+                  transition-all duration-300
+                "
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
+                transition={{ duration: 0.6, delay: index * 0.15 }}
                 viewport={{ once: true }}
               >
                 <Image
@@ -66,44 +77,59 @@ const About = () => {
                   alt={title}
                   width={28}
                   height={28}
-                  className="mt-3"
+                  className="mb-5"
                 />
-                <h3 className="my-4 font-semibold text-white">{title}</h3>
-                <p className="text-white text-sm">{description}</p>
+
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">
+                  {title}
+                </h3>
+
+                <p className="text-sm leading-6 text-gray-600 dark:text-gray-400">{description}</p>
               </motion.li>
             ))}
           </ul>
 
+          {/* Tools */}
           <motion.h4
-            className="flex items-center gap-3 sm:gap-5 mt-8 mb-4 font-semibold text-white"
+            className="mt-10 mb-5 font-semibold text-gray-800 dark:text-gray-200"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            Tools I use
+            Tools I Use
           </motion.h4>
 
-          <ul className="flex flex-wrap gap-4 sm:gap-6">
+          <ul className="flex flex-wrap gap-4">
             {toolsData.map((tool, index) => (
               <motion.li
                 key={index}
-                className="flex items-center justify-center
-                w-12 sm:w-14 aspect-square border border-gray-400
-                rounded-lg cursor-pointer hover:-translate-y-1
-                duration-500"
+                className="
+                  flex items-center justify-center
+                  w-14 h-14 rounded-xl
+                  border border-black/10 dark:border-white/10
+                  bg-white/5 dark:bg-white/5 backdrop-blur-sm
+                  hover:bg-white/10 dark:hover:bg-white/10
+                  hover:border-black/20 dark:hover:border-white/20
+                  hover:scale-105
+                  transition-all duration-300
+                "
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
+                transition={{ duration: 0.5, delay: index * 0.08 }}
                 viewport={{ once: true }}
               >
-                <Image src={tool || null} alt="Tool" className="w-5 sm:w-7" />
+                <Image
+                  src={tool || null}
+                  alt="Tool"
+                  className="w-6 h-6 object-contain"
+                />
               </motion.li>
             ))}
           </ul>
         </motion.div>
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -123,7 +123,7 @@ export const infoList = [
     { icon: assets.web_desain, iconDark: assets.web_desain, title: 'Languages', description: 'PHP, Java, JavaScript, C#' },
     { icon: assets.idea, iconDark: assets.idea, title: 'Frontend', description: 'HTML, CSS, JQuery, React.js, Vue.js' },
     { icon: assets.cogwheel, iconDark: assets.cogwheel, title: 'Backend', description: 'Laravel, CodeIgniter, Spring, .NET Core' },
-    { icon: assets.database, iconDark: assets.database, title: 'Backend', description: 'SQL Server, MySQL, Oracle' },
+    { icon: assets.database, iconDark: assets.database, title: 'Databases', description: 'SQL Server, MySQL, Oracle' },
 ];
 
 export const toolsData = [

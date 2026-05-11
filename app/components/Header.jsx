@@ -1,79 +1,131 @@
 "use client";
-import { assets } from '@/public/assets/assets'
+
+import { assets } from "@/public/assets/assets";
 import { Download } from "lucide-react";
-import Image from 'next/image'
-import React from 'react'
-import { motion } from 'framer-motion'
+import Image from "next/image";
+import React from "react";
+import { motion } from "framer-motion";
 
 const Header = () => {
-    return (
-        <div
-            className="w-11/12 max-w-3xl text-center mx-auto min-h-screen flex flex-col
-            items-center justify-center gap-4 pt-24" 
+  return (
+    <section
+      className="
+        w-11/12 max-w-4xl mx-auto
+        min-h-screen
+        flex flex-col items-center justify-center
+        text-center gap-6
+        pt-24
+      "
+    >
+      {/* Profile Image */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.8 }}
+      >
+        <Image
+          src={assets.profile2}
+          alt="Mohamad Arfiansyah Putra"
+          width={240}
+          height={240}
+          className="
+            rounded-full w-52 sm:w-60
+            shadow-xl
+            border border-white/10
+          "
+        />
+      </motion.div>
+
+      {/* Greeting */}
+      <motion.h3
+        className="
+          text-lg sm:text-2xl
+          font-Ovo
+          text-gray-700 dark:text-gray-300
+        "
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.2 }}
+      >
+        Hi, I'm Mohamad Arfiansyah Putra
+      </motion.h3>
+
+      {/* Main Title */}
+      <motion.h1
+        className="
+          text-4xl sm:text-6xl lg:text-7xl
+          leading-tight
+          font-Ovo
+          text-black dark:text-white
+        "
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.9, delay: 0.4 }}
+      >
+        Fullstack Web Developer
+      </motion.h1>
+
+      {/* Description */}
+      <motion.p
+        className="
+          max-w-2xl
+          text-base sm:text-lg
+          leading-8
+          font-Ovo
+          text-gray-600 dark:text-gray-400
+        "
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.9, delay: 0.6 }}
+      >
+        Passionate about building scalable and user-friendly web applications
+        using modern technologies such as React, Next.js, Node.js, Laravel,
+        Spring Boot, Golang, and .NET.
+      </motion.p>
+
+      {/* Buttons */}
+      <motion.div
+        className="flex flex-col sm:flex-row items-center gap-4 mt-4"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.9, delay: 0.8 }}
+      >
+        {/* Resume Button */}
+        <a
+          href="/CV_Mohamad Arfiansyah Putra.pdf"
+          download
+          className="
+            px-8 py-3 rounded-full
+            flex items-center gap-2
+            bg-black text-white
+            dark:bg-white dark:text-black
+            hover:scale-105
+            transition-all duration-300
+            shadow-md
+          "
         >
-            {/* Profile Image */}
-            <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.8 }}
-            >
-                <Image
-                    src={assets.profile2}
-                    alt="Profile photo"
-                    className="rounded-full w-64 shadow-lg"
-                />
-            </motion.div>
+          <Download className="w-5 h-5" />
+          Download Resume
+        </a>
 
-            {/* Intro */}
-            <motion.h3
-                className="flex items-end gap-2 text-xl md:text-2xl mb-3 font-Ovo text-white"
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.3 }}
-            >
-                Hi I'm Mohamad Arfiansyah Putra
-            </motion.h3>
+        {/* Contact Button */}
+        <a
+          href="#contact"
+          className="
+            px-8 py-3 rounded-full
+            border border-black/10 dark:border-white/10
+            bg-white/70 dark:bg-white/5
+            backdrop-blur-md
+            text-black dark:text-white
+            hover:scale-105
+            transition-all duration-300
+          "
+        >
+          Contact Me
+        </a>
+      </motion.div>
+    </section>
+  );
+};
 
-            {/* Title */}
-            <motion.h1
-                className="text-3xl sm:text-6xl lg:text-[66px] font-Ovo text-white"
-                initial={{ opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.9, delay: 0.5 }}
-            >
-                Passionate <span className="text-darkHover">Fullstack Developer</span> & Software Engineer.
-            </motion.h1>
-
-            {/* Description */}
-            <motion.p
-                className="max-w-2xl mx-auto font-Ovo text-white"
-                initial={{ opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.9, delay: 0.7 }}
-            >
-                I am a <span className="text-darkHover">Fullstack Developer</span> and Software Engineer with a strong passion for designing and developing scalable web applications.
-            </motion.p>
-
-            {/* Button */}
-            <motion.div
-                className="flex flex-col sm:flex-row items-center mt-4"
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.9, delay: 1 }}
-            >
-                <a
-                    href="/CV_Mohamad Arfiansyah Putra.pdf"
-                    download
-                    className="px-10 py-3 border rounded-full border-gray-400 flex items-center gap-2
-                    transition-all duration-300 hover:bg-darkHover hover:text-white
-                    hover:shadow-md"
-                >
-                    <Download className="w-5 h-5" />
-                    Get My Resume
-                </a>
-            </motion.div>
-        </div>
-    )
-}
-
-export default Header
+export default Header;

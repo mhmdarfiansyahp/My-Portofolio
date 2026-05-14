@@ -21,9 +21,9 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className="dark scroll-smooth">
       <body
-        className={`antialiased leading-8 overflow-x-hidden dark:bg-darkTheme dark:text-white`}
+        className={`antialiased leading-8 overflow-x-hidden bg-white text-black dark:bg-darkTheme dark:text-white transition-colors duration-300`}
       >
         {children}
       </body>

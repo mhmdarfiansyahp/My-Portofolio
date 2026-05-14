@@ -12,14 +12,14 @@ const Navbar = () => {
 
   // Load saved theme
   useEffect(() => {
-    const savedTheme = localStorage.getItem("theme");
+    const savedTheme = localStorage.getItem("theme") || "dark";
 
-    if (savedTheme === "light") {
-      document.documentElement.classList.remove("dark");
-      setTheme("light");
-    } else {
+    setTheme(savedTheme);
+
+    if (savedTheme === "dark") {
       document.documentElement.classList.add("dark");
-      setTheme("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
     }
   }, []);
 
@@ -54,10 +54,9 @@ const Navbar = () => {
         flex items-center justify-between
         px-5 lg:px-8 xl:px-[8%] py-4
         transition-all duration-300
-        ${
-          isScroll
-            ? "bg-white/80 dark:bg-[#0f0f0f]/80 backdrop-blur-md shadow-sm"
-            : "bg-transparent"
+        ${isScroll
+          ? "bg-white/80 dark:bg-[#0f0f0f]/80 backdrop-blur-md shadow-sm"
+          : "bg-transparent"
         }
       `}
     >

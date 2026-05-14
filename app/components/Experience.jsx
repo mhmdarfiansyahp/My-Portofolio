@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import experienceData from "../data/ExperienceData";
 
 const Experience = () => {
   const [activeTab, setActiveTab] = useState("experience");
@@ -52,10 +53,9 @@ const Experience = () => {
           className={`
             px-6 py-2 rounded-full
             border transition-all duration-300
-            ${
-              activeTab === "experience"
-                ? "bg-blue-500 text-white border-blue-500 shadow-[0_0_20px_rgba(59,130,246,0.25)]"
-                : "border-black/10 dark:border-white/10 text-black dark:text-white hover:border-blue-500/40 hover:text-blue-500"
+            ${activeTab === "experience"
+              ? "bg-blue-500 text-white border-blue-500 shadow-[0_0_20px_rgba(59,130,246,0.25)]"
+              : "border-black/10 dark:border-white/10 text-black dark:text-white hover:border-blue-500/40 hover:text-blue-500"
             }
           `}
         >
@@ -67,10 +67,9 @@ const Experience = () => {
           className={`
             px-6 py-2 rounded-full
             border transition-all duration-300
-            ${
-              activeTab === "education"
-                ? "bg-blue-500 text-white border-blue-500 shadow-[0_0_20px_rgba(59,130,246,0.25)]"
-                : "border-black/10 dark:border-white/10 text-black dark:text-white hover:border-blue-500/40 hover:text-blue-500"
+            ${activeTab === "education"
+              ? "bg-blue-500 text-white border-blue-500 shadow-[0_0_20px_rgba(59,130,246,0.25)]"
+              : "border-black/10 dark:border-white/10 text-black dark:text-white hover:border-blue-500/40 hover:text-blue-500"
             }
           `}
         >
@@ -83,144 +82,69 @@ const Experience = () => {
         {/* EXPERIENCE */}
         {activeTab === "experience" && (
           <>
-            {/* Experience 1 */}
-            <motion.div
-              variants={cardVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="
-                p-6 rounded-2xl
-                border border-black/10 dark:border-white/10
-                bg-black/5 dark:bg-white/5
-                backdrop-blur-sm
-                hover:border-blue-500/30
-                hover:shadow-[0_0_25px_rgba(59,130,246,0.08)]
-                transition-all duration-300
-              "
-            >
-              <h3 className="text-xl font-semibold text-black dark:text-white">
-                Web Developer Intern
-              </h3>
-
-              <p className="mt-1 text-blue-600 dark:text-blue-400 font-medium">
-                Jan 2025 – Jul 2025
-              </p>
-
-              <p className="mt-1 text-gray-800 dark:text-gray-200 font-semibold">
-                PT. Global Service Indonesia
-              </p>
-
-              <ul
+            {experienceData.experience.map((exp, index) => (
+              <motion.div
+                key={exp.id}
+                variants={cardVariants}
+                initial="hidden"
+                whileInView="visible"
+                transition={{ delay: index * 0.15 }}
+                viewport={{ once: true }}
                 className="
-                  list-disc list-inside
-                  mt-4 space-y-2
-                  text-gray-700 dark:text-gray-300
-                  leading-7
+                  p-6 rounded-2xl
+                  border border-black/10 dark:border-white/10
+                  bg-black/5 dark:bg-white/5
+                  backdrop-blur-sm
+                  hover:border-blue-500/30
+                  hover:shadow-[0_0_25px_rgba(59,130,246,0.08)]
+                  transition-all duration-300
                 "
               >
-                <li>
-                  Developed a Company Profile web application using Vue.js to
-                  support the digitalization of corporate information.
-                </li>
+                <h3 className="text-xl font-semibold text-black dark:text-white">
+                  {exp.role}
+                </h3>
 
-                <li>
-                  Built an Asset Management System with Laravel and MySQL to
-                  improve data integration, asset tracking, and digital goods
-                  issuance.
-                </li>
-              </ul>
+                <p className="mt-1 text-blue-600 dark:text-blue-400 font-medium">
+                  {exp.period}
+                </p>
 
-              {/* Tech Stack */}
-              <div className="flex flex-wrap gap-2 mt-5">
-                {["Laravel", "PHP", "MySQL", "Vue.js"].map((tech, i) => (
-                  <span
-                    key={i}
-                    className="
-                      px-4 py-1 text-sm rounded-full
-                      bg-blue-500/10
-                      text-blue-700 dark:text-blue-300
-                      border border-blue-500/20
-                      hover:bg-blue-500/20
-                      transition-colors duration-300
-                    "
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
+                <p className="mt-1 text-gray-800 dark:text-gray-200 font-semibold">
+                  {exp.company}
+                </p>
 
-            {/* Experience 2 */}
-            <motion.div
-              variants={cardVariants}
-              initial="hidden"
-              whileInView="visible"
-              transition={{ delay: 0.15 }}
-              viewport={{ once: true }}
-              className="
-                p-6 rounded-2xl
-                border border-black/10 dark:border-white/10
-                bg-black/5 dark:bg-white/5
-                backdrop-blur-sm
-                hover:border-blue-500/30
-                hover:shadow-[0_0_25px_rgba(59,130,246,0.08)]
-                transition-all duration-300
-              "
-            >
-              <h3 className="text-xl font-semibold text-black dark:text-white">
-                Website Developer
-              </h3>
+                <ul
+                  className="
+                    list-disc list-outside pl-5
+                    mt-4 space-y-2
+                    text-gray-700 dark:text-gray-300
+                    leading-7
+                  "
+                >
+                  {exp.description.map((desc, i) => (
+                    <li key={i}>{desc}</li>
+                  ))}
+                </ul>
 
-              <p className="mt-1 text-blue-600 dark:text-blue-400 font-medium">
-                Apr 2024 – Dec 2024
-              </p>
-
-              <p className="mt-1 text-gray-800 dark:text-gray-200 font-semibold">
-                PT. Astra Honda Motor
-              </p>
-
-              <ul
-                className="
-                  list-disc list-outside pl-5
-                  mt-4 space-y-2
-                  text-gray-700 dark:text-gray-300
-                  leading-7
-                "
-              >
-                <li>
-                  Migrated the Bill of Materials (BOM) Accessories application
-                  to Java Spring Boot, enabling the creation, activation, and
-                  integration of accessory data based on plant, motor type, and
-                  color.
-                </li>
-
-                <li>
-                  Migrated the Download Unit Motor application to Java Spring
-                  Boot, enabling efficient retrieval and export of motor unit
-                  data to Excel and XML.
-                </li>
-              </ul>
-
-              {/* Tech Stack */}
-              <div className="flex flex-wrap gap-2 mt-5">
-                {["Spring Boot", "Java", "Oracle"].map((tech, i) => (
-                  <span
-                    key={i}
-                    className="
-                      px-4 py-1 text-sm rounded-full
-                      bg-blue-500/10
-                      text-blue-700 dark:text-blue-300
-                      border border-blue-500/20
-                      hover:bg-blue-500/20
-                      transition-colors duration-300
-                    "
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
+                {/* Tech Stack */}
+                <div className="flex flex-wrap gap-2 mt-5">
+                  {exp.tech.map((tech, i) => (
+                    <span
+                      key={i}
+                      className="
+                        px-4 py-1 text-sm rounded-full
+                        bg-blue-500/10
+                        text-blue-700 dark:text-blue-300
+                        border border-blue-500/20
+                        hover:bg-blue-500/20
+                        transition-colors duration-300
+                      "
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </motion.div>
+            ))}
           </>
         )}
 

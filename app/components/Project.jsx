@@ -1,14 +1,33 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import { ChevronDown } from "lucide-react";
-import { motion } from "framer-motion";
+import { ChevronDown, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import projects from "../data/ProjectsData";
 
 const Project = () => {
   const [visibleCount, setVisibleCount] = useState(2);
   const [openId, setOpenId] = useState(null);
+
+  // Modal Preview
+  const [selectedProject, setSelectedProject] = useState(null);
+
+  // Slider
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  // Disable scroll when modal open
+  useEffect(() => {
+    if (selectedProject) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [selectedProject]);
 
   const handleLoadMore = () => {
     if (visibleCount < projects.length) {
@@ -25,7 +44,7 @@ const Project = () => {
       id="project"
       className="w-full px-[8%] lg:px-[12%] py-16 scroll-mt-20"
     >
-      {/* Title */}
+      {/* TITLE */}
       <motion.h2
         className="
           text-center
@@ -38,13 +57,10 @@ const Project = () => {
         transition={{ duration: 0.7 }}
         viewport={{ once: true }}
       >
-        Featured{" "}
-        <span className="text-blue-500">
-          Projects
-        </span>
+        Featured <span className="text-blue-500">Projects</span>
       </motion.h2>
 
-      {/* Subtitle */}
+      {/* SUBTITLE */}
       <motion.p
         className="
           text-center
@@ -62,7 +78,7 @@ const Project = () => {
         contributed to throughout my development journey.
       </motion.p>
 
-      {/* Projects Grid */}
+      {/* PROJECT GRID */}
       <div className="mt-14 grid grid-cols-1 md:grid-cols-2 gap-8">
         {projects.slice(0, visibleCount).map((project, index) => (
           <motion.div
@@ -82,8 +98,14 @@ const Project = () => {
               transition-all duration-300
             "
           >
-            {/* Image */}
-            <div className="overflow-hidden">
+            {/* IMAGE */}
+            <div
+              className="overflow-hidden cursor-pointer"
+              onClick={() => {
+                setSelectedProject(project);
+                setCurrentSlide(0);
+              }}
+            >
               <Image
                 src={project.image}
                 alt={project.title}
@@ -97,9 +119,9 @@ const Project = () => {
               />
             </div>
 
-            {/* Content */}
+            {/* CONTENT */}
             <div className="p-6">
-              {/* Project Title */}
+              {/* TITLE */}
               <h3
                 className="
                   text-xl font-semibold
@@ -109,7 +131,7 @@ const Project = () => {
                 {project.title}
               </h3>
 
-              {/* Description */}
+              {/* DESCRIPTION */}
               <ul
                 className="
                   list-disc list-outside pl-5
@@ -123,7 +145,7 @@ const Project = () => {
                 ))}
               </ul>
 
-              {/* Tech Stack */}
+              {/* TECH STACK */}
               <div className="flex flex-wrap gap-2 mt-5">
                 {project.tech.map((t, i) => (
                   <span
@@ -133,8 +155,6 @@ const Project = () => {
                       bg-blue-500/10
                       text-blue-700 dark:text-blue-300
                       border border-blue-500/20
-                      hover:bg-blue-500/20
-                      transition-colors duration-300
                     "
                   >
                     {t}
@@ -142,7 +162,7 @@ const Project = () => {
                 ))}
               </div>
 
-              {/* Github Button */}
+              {/* GITHUB BUTTON */}
               {project.github && (
                 <div className="relative inline-block mt-6 z-20">
                   {Array.isArray(project.github) ? (
@@ -170,7 +190,7 @@ const Project = () => {
                         />
                       </button>
 
-                      {/* Dropdown */}
+                      {/* DROPDOWN */}
                       {openId === project.id && (
                         <div
                           className="
@@ -225,7 +245,7 @@ const Project = () => {
         ))}
       </div>
 
-      {/* Load More */}
+      {/* LOAD MORE */}
       {projects.length > 2 && (
         <motion.div
           className="flex justify-center mt-12"
@@ -250,6 +270,124 @@ const Project = () => {
           </button>
         </motion.div>
       )}
+
+      {/* FULLSCREEN SLIDER MODAL */}
+      <AnimatePresence>
+        {selectedProject && (
+          <motion.div
+            className="
+              fixed inset-0 z-[100]
+              bg-black/90 backdrop-blur-sm
+              flex items-center justify-center
+              p-5
+            "
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            {/* CLOSE BUTTON */}
+            <button
+              onClick={() => setSelectedProject(null)}
+              className="
+                absolute top-5 right-5
+                text-white hover:text-blue-400
+                transition-colors z-50
+              "
+            >
+              <X size={32} />
+            </button>
+
+            {/* PREV */}
+            <button
+              onClick={() =>
+                setCurrentSlide((prev) =>
+                  prev === 0
+                    ? selectedProject.screenshots.length - 1
+                    : prev - 1
+                )
+              }
+              className="
+                absolute left-5
+                text-white text-5xl
+                hover:text-blue-400
+                transition
+                z-50
+              "
+            >
+              ‹
+            </button>
+
+            {/* NEXT */}
+            <button
+              onClick={() =>
+                setCurrentSlide((prev) =>
+                  prev === selectedProject.screenshots.length - 1
+                    ? 0
+                    : prev + 1
+                )
+              }
+              className="
+                absolute right-5
+                text-white text-5xl
+                hover:text-blue-400
+                transition
+                z-50
+              "
+            >
+              ›
+            </button>
+
+            {/* IMAGE */}
+            <motion.div
+              key={currentSlide}
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="
+                w-full max-w-5xl
+                rounded-2xl overflow-hidden
+              "
+            >
+              <Image
+                src={selectedProject.screenshots[currentSlide]}
+                alt="Screenshot"
+                width={1600}
+                height={900}
+                className="
+                  w-full
+                  max-h-[85vh]
+                  object-contain
+                "
+              />
+            </motion.div>
+
+            {/* DOTS */}
+            <div
+              className="
+                absolute bottom-6
+                flex gap-3
+              "
+            >
+              {selectedProject.screenshots.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentSlide(index)}
+                  className={`
+                    w-3 h-3 rounded-full
+                    transition-all duration-300
+                    ${
+                      currentSlide === index
+                        ? "bg-blue-500 scale-125"
+                        : "bg-white/40"
+                    }
+                  `}
+                />
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };

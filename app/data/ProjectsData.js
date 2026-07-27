@@ -1,76 +1,55 @@
 const projects = [
   {
     id: 1,
-    title: "Dashboard 5K2S",
-
+    title: "Certify",
     description: [
-      "A web platform designed to make it easier for users to view, create, display, and filter data for each student class.",
-      "Implemented histogram charts and assessment history features for each user."
+      "A competency assessment and certification management platform for vocational institutions.",
+      "Handles student assessments, issues QR-verified certificates, and provides public verification via multi-mode QR scanner (camera, image upload, PDF parsing)."
     ],
-
-    image: "/images/Dashboard5K2S.png",
-
+    image: "/images/certify/dashboard-summary.png",
     screenshots: [
-      "/images/Dashboard5K2S.png",
-      "/images/Dashboard5K2S-2.png",
-      "/images/Dashboard5K2S-3.png",
+      "/images/certify/dashboard-summary.png",
+      "/images/certify/student-assessment.png",
+      "/images/certify/competency-status.png",
+      "/images/certify/certificate-verification.png",
+      "/images/certify/scan-qr-modal.png",
     ],
-
-    tech: ["CodeIgniter", "PHP", "JavaScript", "MySQL"],
-
-    github: "https://github.com/mhmdarfiansyahp/Dashboard5K2S.git",
+    tech: ["Laravel 11", "PostgreSQL", "TypeScript", "Tailwind CSS", "React.js"],
+    github: [
+      { label: "Frontend", url: "https://github.com/mhmdarfiansyahp/Certify-FE.git" },
+      { label: "Backend", url: "https://github.com/mhmdarfiansyahp/Assesswatch-Laravel.git" },
+    ]
   },
-
   {
     id: 2,
-    title: "HeroApp",
-
+    title: "PotekGas",
     description: [
-      "Developed a mobile application for equipment lending and maintenance.",
-      "Improved practicum efficiency for students and lecturers."
+      "Developed a web application for medicine purchasing to simplify transactions and sales data management."
     ],
-
-    image: "/images/HeroApp.png",
-
+    image: "/images/PotekGas.png",
     screenshots: [
-      "/images/HeroApp.png",
-      "/images/HeroApp-2.png",
-      "/images/HeroApp-3.png",
+      "/images/PotekGas.png",
     ],
-
-    tech: ["Java", "Android", "PHP", "MySQL"],
-
+    tech: ["Java", "Spring Boot", "React.js", "SQL Server"],
     github: [
-      {
-        label: "Frontend",
-        url: "https://github.com/DaffaAbiyyu29/HEROApp.git",
-      },
-      {
-        label: "Backend",
-        url: "https://github.com/salsans/HeroApp_BE.git",
-      },
-    ],
+      { label: "Frontend", url: "https://github.com/mhmdarfiansyahp/PotekGas-Fe.git" },
+      { label: "Backend", url: "https://github.com/mhmdarfiansyahp/PotekGas-Be.git" }
+    ]
   },
-
   {
     id: 3,
     title: "Internak",
-
     description: [
       "Developed an Android application integrated with SQL Server.",
       "Automated livestock barn management and monitoring."
     ],
-
-    image: "/images/Internak.png",
-
+    image: "/assets/images/Internak.png",
     screenshots: [
-      "/images/Internak.png",
-      "/images/Internak-2.png",
-      "/images/Internak-3.png",
+      "/assets/images/Internak.png",
+      "/assets/images/Internak-2.png",
+      "/assets/images/Internak-3.png",
     ],
-
     tech: ["Java", "Android", "Spring Boot", "SQL Server"],
-
     github: [
       {
         label: "Frontend",
@@ -84,36 +63,44 @@ const projects = [
   },
   {
     id: 4,
-    title: "PotekGas",
+    title: "HeroApp",
     description: [
-      "Developed a web application for medicine purchasing to simplify transactions and sales data management."
+      "Developed a mobile application for equipment lending and maintenance.",
+      "Improved practicum efficiency for students and lecturers."
     ],
-    image: "/images/PotekGas.png",
+    image: "/assets/images/HeroApp.png",
     screenshots: [
-      "/images/PotekGas.png",
+      "/assets/images/HeroApp.png",
+      "/assets/images/HeroApp-2.png",
+      "/assets/images/HeroApp-3.png",
     ],
-
-    tech: ["Java", "Spring Boot", "React.js", "SQL Server"],
+    tech: ["Java", "Android", "PHP", "MySQL"],
     github: [
-      { label: "Frontend", url: "https://github.com/mhmdarfiansyahp/PotekGas-Fe.git" },
-      { label: "Backend", url: "https://github.com/mhmdarfiansyahp/PotekGas-Be.git" }
-    ]
+      {
+        label: "Frontend",
+        url: "https://github.com/DaffaAbiyyu29/HEROApp.git",
+      },
+      {
+        label: "Backend",
+        url: "https://github.com/salsans/HeroApp_BE.git",
+      },
+    ],
   },
   {
     id: 5,
-    title: "Assesswatch",
+    title: "Dashboard 5K2S", // 📌 Proyek Awal
     description: [
-      "A certification platform for managing student competency assessments (Competent, Not Competent, Absent), providing an efficient and structured way to record and present performance data."
+      "A web platform designed to make it easier for users to view, create, display, and filter data for each student class.",
+      "Implemented histogram charts and assessment history features for each user."
     ],
-    image: "/images/Assesswatch.png",
+    image: "/assets/images/Dashboard5K2S.png",
     screenshots: [
-      "/images/Assesswatch.png",
+      "/assets/images/Dashboard5K2S.png",
+      "/assets/images/Dashboard5K2S-2.png",
+      "/assets/images/Dashboard5K2S-3.png",
     ],
-    tech: ["Laravel", "JavaScript", "PHP", "MySQL", "ASP.NET", "C#", "SQL Server"],
-    github: [
-      { label: "Laravel", url: "https://github.com/mhmdarfiansyahp/Assesswatch-Laravel.git" },
-      { label: ".NET", url: "https://github.com/mhmdarfiansyahp/Sertifikasi.git" }
-    ]
+    tech: ["CodeIgniter", "PHP", "JavaScript", "MySQL"],
+    github: "https://github.com/mhmdarfiansyahp/Dashboard5K2S.git",
   }
 ];
 

@@ -2,9 +2,9 @@
 
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import projects from "../data/ProjectsData";
-import ProjectCard from "./project/ProjectCard";
-import ProjectModal from "./project/ProjectModal";
+import projects from "../../data/ProjectsData";
+import ProjectCard from "./ProjectCard";
+import ProjectModal from "./ProjectModal";
 
 const Project = () => {
   const [visibleCount, setVisibleCount] = useState(2);

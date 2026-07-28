@@ -1,5 +1,5 @@
 import React from "react";
-import { navLinks } from "./navLinks";
+import { navLinks } from "../../data/navLinks";
 
 const DesktopMenu = ({ activeSection }) => {
   return (

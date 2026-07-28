@@ -2,8 +2,9 @@
 
 import React, { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
-import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { HiXMark, HiChevronLeft, HiChevronRight } from "react-icons/hi2";
+import { cn } from "@/src/lib/utils";
 
 const ProjectModal = ({ selectedProject, onClose }) => {
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -68,7 +69,7 @@ const ProjectModal = ({ selectedProject, onClose }) => {
                             className="pointer-events-auto p-2 text-white/80 hover:text-white bg-black/60 hover:bg-black/80 rounded-full backdrop-blur-md transition-colors border border-white/10 cursor-pointer"
                             aria-label="Close modal"
                         >
-                            <X size={22} />
+                            <HiXMark className="w-6 h-6" />
                         </button>
                     </div>
 
@@ -82,7 +83,7 @@ const ProjectModal = ({ selectedProject, onClose }) => {
                             className="absolute left-4 sm:left-8 p-3 text-white/80 hover:text-white bg-black/50 hover:bg-black/80 rounded-full backdrop-blur-md transition-all z-50 border border-white/10 hover:scale-105 cursor-pointer"
                             aria-label="Previous slide"
                         >
-                            <ChevronLeft size={28} />
+                            <HiChevronLeft className="w-7 h-7" />
                         </button>
                     )}
 
@@ -96,7 +97,7 @@ const ProjectModal = ({ selectedProject, onClose }) => {
                             className="absolute right-4 sm:right-8 p-3 text-white/80 hover:text-white bg-black/50 hover:bg-black/80 rounded-full backdrop-blur-md transition-all z-50 border border-white/10 hover:scale-105 cursor-pointer"
                             aria-label="Next slide"
                         >
-                            <ChevronRight size={28} />
+                            <HiChevronRight className="w-7 h-7" />
                         </button>
                     )}
 
@@ -133,10 +134,12 @@ const ProjectModal = ({ selectedProject, onClose }) => {
                                     <button
                                         key={index}
                                         onClick={() => setCurrentSlide(index)}
-                                        className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer ${currentSlide === index
+                                        className={cn(
+                                            "h-2.5 rounded-full transition-all duration-300 cursor-pointer",
+                                            currentSlide === index
                                                 ? "w-8 bg-blue-500"
                                                 : "w-2.5 bg-white/40 hover:bg-white/70"
-                                            }`}
+                                        )}
                                         aria-label={`Go to slide ${index + 1}`}
                                     />
                                 ))}

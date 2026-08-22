@@ -84,7 +84,7 @@ const Header = () => {
       >
         {/* Resume Button */}
         <a
-          href="/CV_Mohamad Arfiansyah Putra.pdf"
+          href="/CV - ATS - Mohamad Arfiansyah putra.pdf"
           download
           className={cn(
             "px-8 py-3.5 rounded-full flex items-center gap-2.5 font-medium text-sm sm:text-base",

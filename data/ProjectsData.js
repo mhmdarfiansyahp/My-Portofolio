@@ -1,7 +1,30 @@
 const projects = [
   {
+    id: 2,
+    title: "Medix — Pharmacy Management System",
+    description: [
+      "A role-based pharmacy management system with point-of-sale, inventory control, and sales reporting for admin, cashier, and owner.",
+      "Supports multi-method payments (cash, QRIS, debit, credit, transfer) with automatic change calculation, digital receipts via email/WhatsApp, low-stock and expiry alerts, and price-snapshot transaction history."
+    ],
+    image: "/images/medix/dashboard.png",
+    screenshots: [
+      "/images/medix/dashboard.png",
+      "/images/medix/pos-cart.png",
+      "/images/medix/payment.png",
+      "/images/medix/receipt.png",
+      "/images/medix/drug-management.png",
+      "/images/medix/notifications-stock.png",
+      "/images/medix/reports.png",
+    ],
+    tech: ["Golang", "Gin", "GORM", "PostgreSQL", "React.js", "TypeScript", "Docker"],
+    github: [
+      { label: "Frontend", url: "https://github.com/mhmdarfiansyahp/medix-web.git" },
+      { label: "Backend", url: "https://github.com/mhmdarfiansyahp/medix-be.git" },
+    ]
+  },
+  {
     id: 1,
-    title: "Certify",
+    title: "Student Competency Certification Platform",
     description: [
       "A competency assessment and certification management platform for vocational institutions.",
       "Handles student assessments, issues QR-verified certificates, and provides public verification via multi-mode QR scanner (camera, image upload, PDF parsing)."
@@ -20,21 +43,7 @@ const projects = [
       { label: "Backend", url: "https://github.com/mhmdarfiansyahp/Assesswatch-Laravel.git" },
     ]
   },
-  {
-    id: 2,
-    title: "PotekGas",
-    description: [
-      "Developed a web application for medicine purchasing to simplify transactions and sales data management."
-    ],
-    image: "/images/PotekGas.png",
-    screenshots: [
-      "/images/PotekGas.png",
-    ],
-    tech: ["Java", "Spring Boot", "React.js", "SQL Server"],
-    github: [
-      { label: "Frontend", url: "https://github.com/mhmdarfiansyahp/PotekGas-Fe.git" },
-      { label: "Backend", url: "https://github.com/mhmdarfiansyahp/PotekGas-Be.git" }
-    ]
+  
   // },
   // {
   //   id: 3,
@@ -101,7 +110,7 @@ const projects = [
   //   ],
   //   tech: ["CodeIgniter", "PHP", "JavaScript", "MySQL"],
   //   github: "https://github.com/mhmdarfiansyahp/Dashboard5K2S.git",
-  }
+//   }
 ];
 
 export default projects;

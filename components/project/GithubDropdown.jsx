@@ -10,7 +10,6 @@ const GithubDropdown = ({ project, isOpen, onToggle }) => {
 
     const isMultiple = Array.isArray(project.github);
 
-    // Style tombol utama menggunakan cn agar lebih fleksibel
     const buttonStyle = cn(
         "inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl",
         "bg-blue-600 hover:bg-blue-500 text-white font-medium text-sm",
